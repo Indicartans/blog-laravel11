@@ -3,8 +3,9 @@
     {{-- @dd($posts) --}}
     <article class="py-8 max-w-screen-md ">
         <h2 class="text-3xl tracking-tight font-bold text-gray-900">{{ $post['title'] }}</h2>
-        <a href="">{{ $post['author'] }}</a> | {{ $post->updated_at->format('d M Y') }}
         <div class="text-base text-gray-500">
+            <a href="/authors/{{ $post->author->id }}" class="hover:underline">{{ $post->author->name }}</a> |
+            {{ $post->updated_at->format('d M Y') }}
             <p class="my-4 font-light">
                 {{ $post['body'] }}
             </p>
