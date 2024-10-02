@@ -16,9 +16,11 @@ Route::get('/about', function () {
 
 
 Route::get('/posts', function () {
+    // $posts = Post::with(['author', 'category'])->get();
+    $posts = Post::all();
     return view('posts', [
         'title' => 'Blog',
-        'posts' => Post::all()
+        'posts' => $posts
     ]);
 });
 
@@ -31,12 +33,17 @@ Route::get('/posts/{post:slug}', function (Post $post) {
 Route::get('/authors/{user:username}', function (User $user) {
     // $post = Post::find($slug);
     // dd($post);
+    // $posts = $user->posts->load('category', 'author');
+
     return view('posts', ['title' => count($user->posts) . ' Articles by ' . $user->name, 'posts' => $user->posts]);
 });
 
 Route::get('/categories/{category:slug}', function (Category $category) {
     // $post = Post::find($slug);
     // dd($post);
+
+    // $posts = $category->posts->load('category', 'author');
+
     return view('posts', ['title' => count($category->posts) . ' Articles in ' . $category->name, 'posts' => $category->posts]);
 });
 
