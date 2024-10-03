@@ -27,7 +27,7 @@ Route::get('/posts', function () {
 Route::get('/posts/{post:slug}', function (Post $post) {
     // $post = Post::find($slug);
     // dd($post);
-    return view('post', ['title' => 'Single Post', 'post' => $post]);
+    return view('post', ['title' => $post->title, 'post' => $post]);
 });
 
 Route::get('/authors/{user:username}', function (User $user) {
