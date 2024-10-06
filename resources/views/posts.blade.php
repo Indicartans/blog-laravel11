@@ -41,6 +41,8 @@
         </div>
     </div>
 
+    {{ $posts->links() }}
+
     <div class="py-4 px-4 mx-auto max-w-screen-xl lg:py-8 lg:px-0">
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             @forelse ($posts as $post)
@@ -59,7 +61,8 @@
                         <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                             {{ $post->title }}</h2>
                     </a>
-                    <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{ Str::limit($post['body'], 150) }}</p>
+                    <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{ Str::limit($post['body'], 150) }}
+                    </p>
                     <div class="flex justify-between items-center">
                         <div class="flex items-center space-x-2">
                             <img class="w-7 h-7 rounded-full"
@@ -92,4 +95,6 @@
             @endforelse
         </div>
     </div>
+
+    {{ $posts->links() }}
 </x-layout>
